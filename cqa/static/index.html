@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14111e">
+  <title>CQA Evidence</title>
+  <link rel="stylesheet" href="/assets/styles.css?v=signal">
+  <script type="module" src="/assets/app.js?v=signal"></script>
+</head>
+<body>
+  <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-dialogue" viewBox="0 0 24 24"><path d="M5 5h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 3v-3a2 2 0 0 1-1-2V7a2 2 0 0 1 2-2Z"/><path d="M7 10h10M7 14h6"/></symbol>
+    <symbol id="icon-checklist" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="m8 9 1.5 1.5L12 8m1 2h3m-8 5 1.5 1.5L12 14m1 2h3"/></symbol>
+    <symbol id="icon-compare" viewBox="0 0 24 24"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></symbol>
+    <symbol id="icon-upload" viewBox="0 0 24 24"><path d="M12 16V4m-4 4 4-4 4 4M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24"><path d="M12 2 9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5Z"/></symbol>
+    <symbol id="icon-wave" viewBox="0 0 24 24"><path d="M2 12h4l3-7 4 14 3-7h6"/></symbol>
+  </svg>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon" aria-hidden="true"><svg class="icon"><use href="#icon-wave"/></svg></span>
+      <div>CQA<span class="brand-suffix"> / Evidence</span><small>Conversation quality analytics</small></div>
+    </div>
+    <nav aria-label="Разделы">
+      <button id="workspace-nav" class="nav active" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#icon-dialogue"/></svg>Диалоги</button>
+      <button id="editor-nav" class="nav" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-checklist"/></svg>Чеклист</button>
+      <button id="sandbox-nav" class="nav" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-compare"/></svg>Песочница</button>
+    </nav>
+    <p class="model-label" id="model">Подключение к модели</p>
+  </header>
+  <main>
+    <header class="masthead">
+      <div class="hero-copy">
+        <p class="eyebrow hero-index"><span aria-hidden="true">◈</span> <span id="page-index">01 / Анализ</span></p>
+        <h1 id="page-title">Диалоги</h1>
+        <p id="page-description">От реплики к доказательству и итоговой оценке.</p>
+      </div>
+      <div class="signal-art" aria-hidden="true">
+        <svg viewBox="0 0 640 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="trace-gradient"><stop stop-color="#7657fe" stop-opacity=".1"/><stop offset=".45" stop-color="#bda7ff"/><stop offset=".8" stop-color="#d6fd8b"/><stop offset="1" stop-color="#ab91ff" stop-opacity=".1"/></linearGradient>
+            <pattern id="signal-grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0v32" stroke="#a789ff" stroke-opacity=".16"/></pattern>
+          </defs>
+          <path fill="url(#signal-grid)" d="M0 0h640v240H0z"/>
+          <g class="signal-orbits">
+            <circle cx="420" cy="121" r="41"/><circle cx="420" cy="121" r="75"/><circle cx="420" cy="121" r="109"/>
+            <path d="M420 5v232M300 121h240"/>
+          </g>
+          <path class="signal-echo" d="M0 128C66 129 86 153 122 146s53-62 92-61 58 63 95 70 50-43 77-43 41 24 74 15 48-31 79-24 50 25 101 16"/>
+          <path class="signal-echo" d="M0 132c87 0 96 9 137 9s58-36 89-36 52 48 79 47 54-23 85-23 36 15 69 13 69-20 104-10 62 1 77 0"/>
+          <path class="signal-trace" d="M0 123h79l19-11 15 12h46l20-23 19 39 15-54 18 67 23-30h33l18-9 19 9h33l21-42 18 63 24-99 18 132 25-53h39l14-21 21 20h25l23-8 18 8h41"/>
+          <path class="signal-scan" d="M1 32v176"/>
+          <circle class="signal-point" cx="420" cy="45" r="4.5"/><circle class="signal-point delayed" cx="463" cy="124" r="3.5"/>
+        </svg>
+        <span class="signal-caption"><span></span>SIGNAL ROOM / CQA</span>
+      </div>
+    </header>
+    <section class="toolbar" aria-label="Набор и чеклист">
+      <div class="source-control">
+        <label class="field group-control" for="group">Группа данных<input id="group" value="DEV" maxlength="100"></label>
+        <button id="import" class="button secondary"><svg class="icon" aria-hidden="true"><use href="#icon-upload"/></svg>Загрузить набор</button>
+        <label class="file-button">Импортировать JSON<input id="dataset-file" type="file" accept=".json,application/json"></label>
+      </div>
+      <p id="source" class="source-note">Набор ещё не загружен</p>
+      <div class="version-control"><label for="versions">Версия чеклиста</label><select id="versions"></select></div>
+    </section>
+    <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+    <section id="workspace" class="workspace">
+      <section class="directory panel" aria-labelledby="list-title">
+        <header class="panel-heading">
+          <h2 id="list-title"><svg class="icon" aria-hidden="true"><use href="#icon-dialogue"/></svg>Набор диалогов</h2><span id="count" class="pill">0</span>
+        </header>
+        <div class="filters">
+          <select id="language" aria-label="Язык"><option value="">Все языки</option><option>RU</option><option>KZ</option><option>EN</option></select>
+          <select id="channel" aria-label="Канал"><option value="">Все каналы</option><option value="agent chat">Чаты</option><option value="voice call">Звонки</option></select>
+        </div>
+        <div id="conversation-list" class="conversation-list"></div>
+      </section>
+      <section class="analysis-area">
+        <header class="conversation-header panel">
+          <div><p id="conversation-meta" class="eyebrow">Карточка диалога</p><h2 id="conversation-title">Выберите диалог</h2></div>
+          <button id="evaluate" class="button primary" disabled><svg class="icon" aria-hidden="true"><use href="#icon-spark"/></svg>Оценить оператора</button>
+        </header>
+        <div class="analysis-grid">
+          <section class="panel transcript-panel" aria-labelledby="transcript-title">
+            <header class="panel-heading"><h3 id="transcript-title"><svg class="icon" aria-hidden="true"><use href="#icon-wave"/></svg>Транскрипт</h3><a id="recording" target="_blank" rel="noopener noreferrer" hidden>Слушать запись ↗</a></header>
+            <div id="transcript" class="transcript"><p class="empty">Реплики появятся здесь после выбора диалога.</p></div>
+          </section>
+          <section class="panel assessment-panel" aria-labelledby="assessment-title">
+            <header class="panel-heading"><h3 id="assessment-title"><svg class="icon" aria-hidden="true"><use href="#icon-spark"/></svg>Оценка и доказательства</h3></header>
+            <div id="assessment" class="assessment"><p class="empty">Запустите оценку, чтобы увидеть результат.</p></div>
+          </section>
+        </div>
+      </section>
+    </section>
+    <section id="editor" class="panel editor" hidden>
+      <header class="panel-heading editor-heading">
+        <div><h2>Настройка критериев</h2><p class="muted">Сохранение создаёт отдельную версию чеклиста.</p></div>
+        <button id="add-criterion" class="button secondary">Добавить критерий</button>
+      </header>
+      <form id="checklist-form">
+        <div id="criteria-editor" class="criteria-editor"></div>
+        <div class="editor-footer"><button id="save-checklist" class="button primary" type="submit">Сохранить новую версию</button></div>
+      </form>
+    </section>
+    <section id="sandbox" class="panel editor" hidden>
+      <header class="panel-heading editor-heading">
+        <div><h2>Сравнение версий</h2><p class="muted">Сравниваются исходные AI-оценки. Выберите до пяти диалогов.</p></div>
+      </header>
+      <form id="sandbox-form" class="sandbox-form">
+        <div class="sandbox-controls">
+          <label class="field">До<select id="baseline-version"></select></label>
+          <label class="field">После<select id="candidate-version"></select></label>
+          <label class="field">Диалог<select id="sandbox-choice"></select></label>
+          <button id="sandbox-add" class="button secondary" type="button">Добавить</button>
+        </div>
+        <div id="sandbox-selected" class="evidence-row"></div>
+        <button id="sandbox-run" class="button primary" type="submit">Проверить влияние</button>
+      </form>
+      <div id="sandbox-results" class="sandbox-form"></div>
+    </section>
+  </main>
+</body>
+</html>
