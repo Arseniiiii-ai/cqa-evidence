@@ -9,6 +9,7 @@ from cqa.dataset import DatasetError, dataset_url, validate_dataset
 from cqa.model import ModelRun, OllamaEvaluator, _decode_audit_answers, _ground_answers
 from cqa.sandbox import compare_versions
 from cqa.scoring import EvaluationError, evaluate, official_checklist
+from cqa.second_pass import refine_submission
 from cqa.store import Store
 from cqa.submission import run_submission, validate_submission
 
@@ -171,6 +172,15 @@ class EvaluationTests(unittest.TestCase):
                 self.assertIs(run.answers["closure"]["value"], expected)
                 self.assertEqual(run.answers["closure"]["checked_turns"], [3, 4])
 
+        record = deepcopy(self.record)
+        record["transcript"].extend([
+            {"timestamp": "00:04", "speaker": "system", "text": "Клиент отключился."},
+            {"timestamp": "00:05", "speaker": "system", "text": "Оператор закрыл чат."},
+        ])
+        with unittest.mock.patch.object(evaluator, "_ask", return_value=deepcopy(model_answer)):
+            run = evaluator.run(record, self.checklist, reuse_answers=prior)
+        self.assertIsNone(run.answers["closure"]["value"])
+
     def test_appeal_recalculates_and_keeps_ai_result_after_reopening(self):
         with TemporaryDirectory() as folder:
             path = Path(folder) / "cqa.sqlite"
@@ -204,6 +214,28 @@ class EvaluationTests(unittest.TestCase):
             payload["results"][0]["score"]["final_score"] = 99
             with self.assertRaisesRegex(EvaluationError, "Итог"):
                 validate_submission(payload, records)
+
+    def test_second_pass_merges_only_selected_decisions_and_recalculates(self):
+        original = evaluate(self.record, self.answers, self.checklist)
+        payload = {
+            "schema_version": "1.0", "team_name": "Команда",
+            "model": {"mode": "local", "name": "gemma3:4b"}, "results": [original],
+        }
+        reviewed = {
+            "discovery": {"value": False, "rationale": "Уточнения не было.", "checked_turns": [1, 3]},
+            "identification": {"value": False, "rationale": "Нет подтверждения.", "checked_turns": [1, 3]},
+            "consultation": {"value": 0, "rationale": "Нет ответа.", "checked_turns": [1, 3]},
+            "closure": {"value": False, "rationale": "Нет завершения.", "checked_turns": [1, 3]},
+        }
+        records = {self.record["conversation_id"]: self.record}
+        with unittest.mock.patch("cqa.second_pass.audit", return_value=reviewed):
+            result = refine_submission(payload, records, OllamaEvaluator(model="qwen3:4b-instruct"), Mock())
+        updated = result["results"][0]
+        self.assertEqual(result["model"]["name"], "gemma3:4b + qwen3:4b-instruct")
+        self.assertEqual(updated["score"], {"final_score": 55.5, "critical_flag": False})
+        changed = {old["criterion_id"] for old, new in zip(original["criteria"], updated["criteria"]) if old != new}
+        self.assertEqual(changed, {"discovery", "identification"})
+        self.assertEqual(payload["results"][0], original)
 
     def test_sandbox_reuses_unchanged_answers_and_requests_only_changed_rule(self):
         with TemporaryDirectory() as folder:

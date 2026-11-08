@@ -3,7 +3,7 @@
   "team_name": "Qanagattandirilmagandyktarynizdan",
   "model": {
     "mode": "local",
-    "name": "gemma3:4b"
+    "name": "gemma3:4b + qwen3:4b-instruct"
   },
   "results": [
     {
@@ -173,20 +173,19 @@
         {
           "criterion_id": "discovery",
           "evidence_turns": [
-            13,
-            15
+            13
           ],
-          "rationale": "Оператор учёл известные детали и уточнил недостающее до ответа.",
-          "value": true
+          "rationale": "К первому содержательному ответу у оператора уже было достаточно сведений для конкретной рекомендации.",
+          "value": null
         },
         {
           "criterion_id": "identification",
           "evidence_turns": [
-            10,
-            12
+            1,
+            10
           ],
-          "rationale": "Проверка личности подтверждена до раскрытия данных или защищённого действия.",
-          "value": true
+          "rationale": "До раскрытия сведений по счёту или защищённого действия подтверждение личности не зафиксировано.",
+          "value": false
         },
         {
           "criterion_id": "consultation",
@@ -234,7 +233,7 @@
       ],
       "score": {
         "critical_flag": false,
-        "final_score": 90.0
+        "final_score": 64.71
       },
       "status": "ok"
     },
@@ -252,12 +251,10 @@
         {
           "criterion_id": "discovery",
           "evidence_turns": [
-            10,
-            11,
-            12
+            10
           ],
-          "rationale": "Оператор учёл известные детали и уточнил недостающее до ответа.",
-          "value": null
+          "rationale": "Оператор начал отвечать до уточнения недостающих сведений.",
+          "value": false
         },
         {
           "criterion_id": "identification",
@@ -315,7 +312,7 @@
       ],
       "score": {
         "critical_flag": true,
-        "final_score": 55.38
+        "final_score": 45.0
       },
       "status": "ok"
     },
@@ -333,18 +330,21 @@
         {
           "criterion_id": "discovery",
           "evidence_turns": [
+            10,
+            11,
             13
           ],
-          "rationale": "Оператор учёл известные детали и уточнил недостающее до ответа.",
-          "value": true
+          "rationale": "К первому содержательному ответу у оператора уже было достаточно сведений для конкретной рекомендации.",
+          "value": null
         },
         {
           "criterion_id": "identification",
           "evidence_turns": [
-            13
+            10,
+            15
           ],
-          "rationale": "Проверка личности подтверждена до раскрытия данных или защищённого действия.",
-          "value": true
+          "rationale": "Оператор не раскрывал сведения по конкретному счёту и не выполнял защищённое действие.",
+          "value": null
         },
         {
           "criterion_id": "consultation",
@@ -413,18 +413,20 @@
         {
           "criterion_id": "discovery",
           "evidence_turns": [
+            1,
+            5,
             10
           ],
-          "rationale": "Оператор учёл известные детали и уточнил недостающее до ответа.",
-          "value": true
+          "rationale": "К первому содержательному ответу у оператора уже было достаточно сведений для конкретной рекомендации.",
+          "value": null
         },
         {
           "criterion_id": "identification",
           "evidence_turns": [
             10
           ],
-          "rationale": "Проверка личности подтверждена до раскрытия данных или защищённого действия.",
-          "value": true
+          "rationale": "Оператор не раскрывал сведения по конкретному счёту и не выполнял защищённое действие.",
+          "value": null
         },
         {
           "criterion_id": "consultation",
@@ -470,7 +472,7 @@
       ],
       "score": {
         "critical_flag": true,
-        "final_score": 86.0
+        "final_score": 78.46
       },
       "status": "ok"
     },
@@ -488,20 +490,19 @@
         {
           "criterion_id": "discovery",
           "evidence_turns": [
-            10,
-            12
+            10
           ],
-          "rationale": "Оператор предложил передать средства напрямую, что подразумевает уточнение деталей.",
-          "value": true
+          "rationale": "К первому содержательному ответу у оператора уже было достаточно сведений для конкретной рекомендации.",
+          "value": null
         },
         {
           "criterion_id": "identification",
           "evidence_turns": [
             10,
-            12
+            14
           ],
-          "rationale": "Оператор предложил передать средства напрямую, что подразумевает уточнение деталей.",
-          "value": false
+          "rationale": "Оператор не раскрывал сведения по конкретному счёту и не выполнял защищённое действие.",
+          "value": null
         },
         {
           "criterion_id": "consultation",
@@ -547,7 +548,7 @@
       ],
       "score": {
         "critical_flag": true,
-        "final_score": 75.0
+        "final_score": 92.31
       },
       "status": "ok"
     },
@@ -639,12 +640,11 @@
         {
           "criterion_id": "discovery",
           "evidence_turns": [
-            12,
-            13,
-            14
+            11,
+            12
           ],
-          "rationale": "The operator provided specific instructions about the alternative website and app, clarifying the client's confusion.",
-          "value": true
+          "rationale": "К первому содержательному ответу у оператора уже было достаточно сведений для конкретной рекомендации.",
+          "value": null
         },
         {
           "criterion_id": "identification",
@@ -700,7 +700,7 @@
       ],
       "score": {
         "critical_flag": false,
-        "final_score": 75.0
+        "final_score": 69.23
       },
       "status": "ok"
     },
@@ -718,12 +718,11 @@
         {
           "criterion_id": "discovery",
           "evidence_turns": [
-            11,
-            12,
-            17
+            1,
+            10
           ],
-          "rationale": "The operator clarified the location of the pricing plan after the client asked for specific guidance.",
-          "value": true
+          "rationale": "К первому содержательному ответу у оператора уже было достаточно сведений для конкретной рекомендации.",
+          "value": null
         },
         {
           "criterion_id": "identification",
@@ -780,7 +779,7 @@
       ],
       "score": {
         "critical_flag": false,
-        "final_score": 87.5
+        "final_score": 84.62
       },
       "status": "ok"
     }

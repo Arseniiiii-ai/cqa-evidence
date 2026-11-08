@@ -58,6 +58,13 @@ _AGENT_CLOSED_CHAT = re.compile(
     r"|оператор (?:чатты|диалогты) (?:жапты|аяқтады))[.!]?",
     re.IGNORECASE,
 )
+_CLIENT_LEFT_CHAT = re.compile(
+    r"(?:(?:the )?(?:client|customer) (?:left|ended) (?:the )?(?:chat|conversation)"
+    r"|(?:the )?(?:client|customer) disconnected"
+    r"|клиент (?:покинул|завершил) (?:чат|диалог)|клиент отключился"
+    r"|клиент чаттан шықты)[.!]?",
+    re.IGNORECASE,
+)
 
 
 def uses_official_choices(criterion):
@@ -75,8 +82,13 @@ def correct_chat_closure(record, answer):
 
     last_operator = next(
         (i for i in range(len(transcript) - 1, 0, -1) if transcript[i - 1]["speaker"] == "operator"),
-        len(transcript),
+        None,
     )
+    if last_operator is None or any(
+        turn["speaker"] == "system" and _CLIENT_LEFT_CHAT.fullmatch(turn["text"].strip())
+        for turn in transcript[last_operator:-1]
+    ):
+        return answer
     return {
         "value": False,
         "rationale": "Чат завершил оператор. Полное завершение по чеклисту перед закрытием не зафиксировано.",
