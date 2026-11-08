@@ -1401,10 +1401,11 @@
         {
           "criterion_id": "closure",
           "evidence_turns": [
-            10
+            12,
+            13
           ],
-          "rationale": "The chat was abruptly closed by the system without any closure or recap. The operator did not offer any further assistance or a final statement.",
-          "value": null
+          "rationale": "Чат завершил оператор. Полное завершение по чеклисту перед закрытием не зафиксировано.",
+          "value": false
         },
         {
           "criterion_id": "critical",
@@ -1417,7 +1418,7 @@
       ],
       "score": {
         "critical_flag": false,
-        "final_score": 80.67
+        "final_score": 75.63
       },
       "status": "ok"
     },
@@ -1706,10 +1707,11 @@
         {
           "criterion_id": "closure",
           "evidence_turns": [
-            10
+            12,
+            14
           ],
-          "rationale": "The chat ended abruptly with the operator closing the session without offering any recap, summary, or further assistance. This is a premature closure. The decision is `customer_left_before_closure`.",
-          "value": null
+          "rationale": "Чат завершил оператор. Полное завершение по чеклисту перед закрытием не зафиксировано.",
+          "value": false
         },
         {
           "criterion_id": "critical",
@@ -1723,7 +1725,7 @@
       ],
       "score": {
         "critical_flag": true,
-        "final_score": 56.36
+        "final_score": 51.67
       },
       "status": "ok"
     },
@@ -3334,10 +3336,11 @@
         {
           "criterion_id": "closure",
           "evidence_turns": [
-            10
+            12,
+            14
           ],
-          "rationale": "The interaction ended abruptly before a closure could occur. The operator offered assistance but the client declined, and the chat was terminated.",
-          "value": null
+          "rationale": "Чат завершил оператор. Полное завершение по чеклисту перед закрытием не зафиксировано.",
+          "value": false
         },
         {
           "criterion_id": "critical",
@@ -3351,7 +3354,7 @@
       ],
       "score": {
         "critical_flag": true,
-        "final_score": 100.0
+        "final_score": 94.12
       },
       "status": "ok"
     },
@@ -4490,10 +4493,11 @@
         {
           "criterion_id": "closure",
           "evidence_turns": [
-            10
+            12,
+            14
           ],
-          "rationale": "The chat was closed by the system before the operator could offer a closing statement or recap.",
-          "value": null
+          "rationale": "Чат завершил оператор. Полное завершение по чеклисту перед закрытием не зафиксировано.",
+          "value": false
         },
         {
           "criterion_id": "critical",
@@ -4506,7 +4510,7 @@
       ],
       "score": {
         "critical_flag": true,
-        "final_score": 75.83
+        "final_score": 70.0
       },
       "status": "ok"
     },

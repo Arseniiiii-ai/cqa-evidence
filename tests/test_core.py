@@ -151,6 +151,26 @@ class EvaluationTests(unittest.TestCase):
         with self.assertRaisesRegex(EvaluationError, "реплику оператора"):
             _decode_audit_answers(raw, transcript, {}, [3])
 
+    def test_operator_close_precludes_not_applicable_for_official_closure(self):
+        evaluator = OllamaEvaluator()
+        prior = {key: value for key, value in self.answers.items() if key != "closure"}
+        model_answer = {"closure": {"value": None, "rationale": "Диалог оборвался.", "checked_turns": [3, 4]}}
+        for speaker, text, expected in (
+            ("system", "Оператор закрыл чат.", False),
+            ("system", "The agent ended the conversation.", False),
+            ("system", "Оператор чатты жапты.", False),
+            ("system", "Клиент завершил чат.", None),
+            ("client", "Оператор закрыл чат.", None),
+        ):
+            with self.subTest(speaker=speaker, text=text), unittest.mock.patch.object(
+                evaluator, "_ask", return_value=deepcopy(model_answer),
+            ):
+                record = deepcopy(self.record)
+                record["transcript"].append({"timestamp": "00:04", "speaker": speaker, "text": text})
+                run = evaluator.run(record, self.checklist, reuse_answers=prior)
+                self.assertIs(run.answers["closure"]["value"], expected)
+                self.assertEqual(run.answers["closure"]["checked_turns"], [3, 4])
+
     def test_appeal_recalculates_and_keeps_ai_result_after_reopening(self):
         with TemporaryDirectory() as folder:
             path = Path(folder) / "cqa.sqlite"

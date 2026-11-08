@@ -298,10 +298,11 @@
         {
           "criterion_id": "closure",
           "evidence_turns": [
-            14
+            14,
+            15
           ],
-          "rationale": "The chat ended abruptly with the operator closing the chat. There was no opportunity for the operator to offer a final recap or suggest further assistance.",
-          "value": null
+          "rationale": "Чат завершил оператор. Полное завершение по чеклисту перед закрытием не зафиксировано.",
+          "value": false
         },
         {
           "criterion_id": "critical",
@@ -314,7 +315,7 @@
       ],
       "score": {
         "critical_flag": true,
-        "final_score": 60.0
+        "final_score": 55.38
       },
       "status": "ok"
     },
@@ -452,10 +453,11 @@
         {
           "criterion_id": "closure",
           "evidence_turns": [
-            10
+            10,
+            12
           ],
-          "rationale": "The chat ended abruptly with the operator's turn and the system indicating the operator was transferred. There was no closure of the issue or offer of further assistance.",
-          "value": null
+          "rationale": "Чат завершил оператор. Полное завершение по чеклисту перед закрытием не зафиксировано.",
+          "value": false
         },
         {
           "criterion_id": "critical",
@@ -468,7 +470,7 @@
       ],
       "score": {
         "critical_flag": true,
-        "final_score": 90.53
+        "final_score": 86.0
       },
       "status": "ok"
     },

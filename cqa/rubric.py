@@ -1,5 +1,7 @@
 """Decision choices for criteria whose rules match the official checklist."""
 
+import re
+
 from .scoring import official_checklist
 
 
@@ -50,7 +52,33 @@ RULES = {
 
 GROUPS = (("contact", "discovery", "identification"), ("consultation", "empathy", "dialogue", "closure"))
 
+_AGENT_CLOSED_CHAT = re.compile(
+    r"(?:(?:the )?(?:operator|agent) (?:closed|ended) (?:the )?(?:chat|conversation)"
+    r"|оператор (?:закрыл|завершил) (?:чат|диалог)"
+    r"|оператор (?:чатты|диалогты) (?:жапты|аяқтады))[.!]?",
+    re.IGNORECASE,
+)
+
 
 def uses_official_choices(criterion):
     key = criterion["criterion_id"]
     return key in RULES and all(criterion.get(field) == _OFFICIAL[key].get(field) for field in _SEMANTICS)
+
+
+def correct_chat_closure(record, answer):
+    transcript = record["transcript"]
+    if record["channel"] != "agent chat" or not transcript or answer["value"] is not None:
+        return answer
+    last = transcript[-1]
+    if last["speaker"] != "system" or not _AGENT_CLOSED_CHAT.fullmatch(last["text"].strip()):
+        return answer
+
+    last_operator = next(
+        (i for i in range(len(transcript) - 1, 0, -1) if transcript[i - 1]["speaker"] == "operator"),
+        len(transcript),
+    )
+    return {
+        "value": False,
+        "rationale": "Чат завершил оператор. Полное завершение по чеклисту перед закрытием не зафиксировано.",
+        "checked_turns": [last_operator, len(transcript)],
+    }
