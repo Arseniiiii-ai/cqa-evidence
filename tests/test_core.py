@@ -237,6 +237,18 @@ class EvaluationTests(unittest.TestCase):
         self.assertEqual(changed, {"discovery", "identification"})
         self.assertEqual(payload["results"][0], original)
 
+    def test_second_pass_preserves_valid_call_when_review_fails(self):
+        record = {**self.record, "channel": "voice call"}
+        payload = {
+            "schema_version": "1.0", "team_name": "Команда",
+            "model": {"mode": "local", "name": "gemma3:4b"},
+            "results": [evaluate(record, self.answers, self.checklist)],
+        }
+        with unittest.mock.patch("cqa.second_pass.audit", side_effect=EvaluationError("Ответ оборвался.")), \
+                unittest.mock.patch("cqa.second_pass.sys.stderr"):
+            result = refine_submission(payload, {record["conversation_id"]: record}, OllamaEvaluator(), Mock())
+        self.assertEqual(result, payload)
+
     def test_sandbox_reuses_unchanged_answers_and_requests_only_changed_rule(self):
         with TemporaryDirectory() as folder:
             store = Store(Path(folder) / "cqa.sqlite")

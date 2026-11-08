@@ -3,6 +3,7 @@ from argparse import ArgumentParser
 import json
 import os
 from pathlib import Path
+import sys
 
 from .dataset import DatasetError, load_dataset
 from .model import OllamaEvaluator, _ground_answers, _unique_object
@@ -99,13 +100,18 @@ def audit(evaluator, record):
     user = DEFINITIONS + "\n\nTRANSCRIPT\n" + json.dumps(data, ensure_ascii=False)
     payload = {
         "model": evaluator.model, "stream": False, "think": False, "format": schema,
-        "options": {"temperature": 0, "num_ctx": 8192, "num_predict": 500},
+        "options": {
+            "temperature": 0, "num_ctx": 8192,
+            "num_predict": 850 if record["channel"] == "voice call" else 500,
+        },
         "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": user}],
     }
     for attempt in range(2):
         try:
             res = evaluator._chat(payload)
             if not res.get("done") or res.get("done_reason") == "length":
+                payload["options"]["num_predict"] = 1000
+                payload["options"]["repeat_penalty"] = 1.1
                 raise EvaluationError("Незавершённый ответ второго прохода.")
             parsed = json.loads(res["message"]["content"], object_pairs_hook=_unique_object)
             grounded = _decode(parsed, transcript, op)
@@ -217,18 +223,25 @@ def refine_submission(payload, records, evaluator, progress):
         raise EvaluationError("Перед вторым проходом завершите оценку всех диалогов.")
 
     rows = []
+    used_reviewer = False
     for row in payload["results"]:
         cid = row["conversation_id"]
         record = records[cid]
         try:
             reviewed = audit(evaluator, record)
-            rows.append(refine_result(record, row, reviewed))
+            used_reviewer = True
         except EvaluationError as error:
-            raise EvaluationError(f"{cid}: {error}") from None
+            if record["channel"] != "voice call":
+                raise EvaluationError(f"{cid}: {error}") from None
+            print(f"{cid}: сохранена исходная оценка звонка. {error}", file=sys.stderr)
+            reviewed = {}
+        rows.append(refine_result(record, row, reviewed))
         progress(len(rows), len(records), cid)
 
     models = payload["model"]["name"].split(" + ")
-    model = {**payload["model"], "name": " + ".join(dict.fromkeys([*models, evaluator.model]))}
+    if used_reviewer:
+        models.append(evaluator.model)
+    model = {**payload["model"], "name": " + ".join(dict.fromkeys(models))}
     result = {**payload, "model": model, "results": rows}
     validate_submission(result, records)
     return result
