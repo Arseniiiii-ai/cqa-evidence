@@ -1,0 +1,786 @@
+{
+  "schema_version": "1.0",
+  "team_name": "Qanagattandirilmagandyktarynizdan",
+  "model": {
+    "mode": "local",
+    "name": "gemma3:4b"
+  },
+  "results": [
+    {
+      "conversation_id": "p2-ru-001",
+      "criteria": [
+        {
+          "criterion_id": "contact",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Оператор поздоровался на языке клиента и представился.",
+          "value": true
+        },
+        {
+          "criterion_id": "discovery",
+          "evidence_turns": [
+            10,
+            11
+          ],
+          "rationale": "Оператор учёл известные детали и уточнил недостающее до ответа.",
+          "value": null
+        },
+        {
+          "criterion_id": "identification",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Запрос не требовал идентификации.",
+          "value": null
+        },
+        {
+          "criterion_id": "consultation",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator correctly identified the current rate in the web-cabinet, providing the client with the specific location. This addresses the client's initial question about checking the current rate.",
+          "value": 20
+        },
+        {
+          "criterion_id": "empathy",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator greeted the client politely and offered further assistance if needed, demonstrating a basic level of empathy.",
+          "value": true
+        },
+        {
+          "criterion_id": "dialogue",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator provided a clear and concise response, acknowledging the client's request and directing them to the relevant information. The wait time was also clearly communicated.",
+          "value": 10
+        },
+        {
+          "criterion_id": "closure",
+          "evidence_turns": [
+            12
+          ],
+          "rationale": "The operator offered further assistance and said goodbye, completing the interaction. However, the client did not fully utilize the provided information.",
+          "value": true
+        },
+        {
+          "criterion_id": "critical",
+          "evidence_turns": [
+            10,
+            12
+          ],
+          "rationale": "Оператор предложил поддержку и прощание.",
+          "value": false
+        }
+      ],
+      "score": {
+        "critical_flag": false,
+        "final_score": 100.0
+      },
+      "status": "ok"
+    },
+    {
+      "conversation_id": "p2-ru-002",
+      "criteria": [
+        {
+          "criterion_id": "contact",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Оператор поздоровался на языке клиента и представился.",
+          "value": true
+        },
+        {
+          "criterion_id": "discovery",
+          "evidence_turns": [
+            10,
+            12
+          ],
+          "rationale": "Оператор учёл известные детали и уточнил недостающее до ответа.",
+          "value": null
+        },
+        {
+          "criterion_id": "identification",
+          "evidence_turns": [
+            10,
+            12
+          ],
+          "rationale": "Запрос не требовал идентификации.",
+          "value": null
+        },
+        {
+          "criterion_id": "consultation",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator provided a specific, step-by-step instruction on where to find and use the 'Change Information' order, which directly addresses the client's issue of needing to update their profile data to enable withdrawals. The client's question about whether to re-initiate the withdrawal was also answered.",
+          "value": 10
+        },
+        {
+          "criterion_id": "empathy",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator acknowledged the client's frustration by stating, 'Если появятся ещё вопросы, напишите нам.' (If you have any further questions, write to us.) This demonstrates a basic level of empathy and willingness to assist.",
+          "value": true
+        },
+        {
+          "criterion_id": "dialogue",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator clearly explained the process and acknowledged the client's need to wait for the operator to connect. The exchange was relatively smooth and followed a logical flow.",
+          "value": 10
+        },
+        {
+          "criterion_id": "closure",
+          "evidence_turns": [
+            14
+          ],
+          "rationale": "The operator ended the conversation with a standard closing statement, 'Если появятся ещё вопросы, напишите нам.' (If you have any further questions, write to us.) This does not constitute a complete closure as it doesn't recap the solution or offer further assistance. The conversation ended abruptly.",
+          "value": false
+        },
+        {
+          "criterion_id": "critical",
+          "evidence_turns": [
+            10,
+            12
+          ],
+          "rationale": "Оператор предложил клиенту обратиться в меню для обновления данных, не предложив альтернативные решения или объяснив причину задержки вывода средств.",
+          "value": false
+        }
+      ],
+      "score": {
+        "critical_flag": false,
+        "final_score": 76.92
+      },
+      "status": "ok"
+    },
+    {
+      "conversation_id": "p2-ru-003",
+      "criteria": [
+        {
+          "criterion_id": "contact",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Оператор поздоровался на языке клиента и представился в первом ответе.",
+          "value": true
+        },
+        {
+          "criterion_id": "discovery",
+          "evidence_turns": [
+            13,
+            15
+          ],
+          "rationale": "Оператор учёл известные детали и уточнил недостающее до ответа.",
+          "value": true
+        },
+        {
+          "criterion_id": "identification",
+          "evidence_turns": [
+            10,
+            12
+          ],
+          "rationale": "Проверка личности подтверждена до раскрытия данных или защищённого действия.",
+          "value": true
+        },
+        {
+          "criterion_id": "consultation",
+          "evidence_turns": [
+            10,
+            18
+          ],
+          "rationale": "The operator asks for specific details – when the money was sent and in what currency – to investigate the issue. This is a direct step towards resolving the client's problem.",
+          "value": 10
+        },
+        {
+          "criterion_id": "empathy",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator acknowledges the client's frustration with not seeing the funds appear, demonstrating understanding of the situation.",
+          "value": true
+        },
+        {
+          "criterion_id": "dialogue",
+          "evidence_turns": [
+            10,
+            18
+          ],
+          "rationale": "The operator provides information about the different statuses of the transaction and explains that verification is ongoing, which is a necessary step in the process.",
+          "value": 10
+        },
+        {
+          "criterion_id": "closure",
+          "evidence_turns": [
+            22
+          ],
+          "rationale": "The operator ends the conversation with a farewell and confirms that no further action is needed at this time.",
+          "value": true
+        },
+        {
+          "criterion_id": "critical",
+          "evidence_turns": [
+            10,
+            18
+          ],
+          "rationale": "Оператор не нарушил никаких инструкций.",
+          "value": false
+        }
+      ],
+      "score": {
+        "critical_flag": false,
+        "final_score": 90.0
+      },
+      "status": "ok"
+    },
+    {
+      "conversation_id": "p2-ru-004",
+      "criteria": [
+        {
+          "criterion_id": "contact",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Оператор поздоровался на языке клиента и представился в первом ответе.",
+          "value": true
+        },
+        {
+          "criterion_id": "discovery",
+          "evidence_turns": [
+            10,
+            11,
+            12
+          ],
+          "rationale": "Оператор учёл известные детали и уточнил недостающее до ответа.",
+          "value": null
+        },
+        {
+          "criterion_id": "identification",
+          "evidence_turns": [
+            10,
+            13,
+            14
+          ],
+          "rationale": "Запрос не требовал идентификации. Общие инструкции о том, где клиент может сам посмотреть данные, допустимы без идентификации, если оператор сам их не раскрывает и не выполняет защищённое действие.",
+          "value": null
+        },
+        {
+          "criterion_id": "consultation",
+          "evidence_turns": [
+            10,
+            12,
+            14
+          ],
+          "rationale": "The operator correctly identified the issue – a restriction on withdrawals – and directed the client to the relevant section within the application for details. This is a clear and accurate response to the client's initial problem.",
+          "value": 20
+        },
+        {
+          "criterion_id": "empathy",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator's response is functional but lacks empathy. There is no attempt to acknowledge the client's frustration or offer reassurance.",
+          "value": false
+        },
+        {
+          "criterion_id": "dialogue",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator's responses are direct and to the point, but the conversation is somewhat abrupt. The operator immediately jumps into providing information without any introductory pleasantries or confirmation of understanding. The operator's turn is 2:23, and the client's turn is 02:32.",
+          "value": 4
+        },
+        {
+          "criterion_id": "closure",
+          "evidence_turns": [
+            14
+          ],
+          "rationale": "The chat ended abruptly with the operator closing the chat. There was no opportunity for the operator to offer a final recap or suggest further assistance.",
+          "value": null
+        },
+        {
+          "criterion_id": "critical",
+          "evidence_turns": [
+            12
+          ],
+          "rationale": "На счете действует ограничение на вывод. Детали смотрите в приложении.",
+          "value": true
+        }
+      ],
+      "score": {
+        "critical_flag": true,
+        "final_score": 60.0
+      },
+      "status": "ok"
+    },
+    {
+      "conversation_id": "p2-kz-001",
+      "criteria": [
+        {
+          "criterion_id": "contact",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Оператор поздоровался на языке клиента и представился в первом ответе.",
+          "value": true
+        },
+        {
+          "criterion_id": "discovery",
+          "evidence_turns": [
+            13
+          ],
+          "rationale": "Оператор учёл известные детали и уточнил недостающее до ответа.",
+          "value": true
+        },
+        {
+          "criterion_id": "identification",
+          "evidence_turns": [
+            13
+          ],
+          "rationale": "Проверка личности подтверждена до раскрытия данных или защищённого действия.",
+          "value": true
+        },
+        {
+          "criterion_id": "consultation",
+          "evidence_turns": [
+            10,
+            13,
+            15
+          ],
+          "rationale": "The operator provided a step-by-step instruction on how to proceed, including the specific menu option and the need to upload the documents. This directly addresses the client's initial question about where to find the necessary documentation.",
+          "value": 20
+        },
+        {
+          "criterion_id": "empathy",
+          "evidence_turns": [
+            10,
+            15
+          ],
+          "rationale": "The operator expressed satisfaction that they were able to assist the client, and wished them well. This demonstrates a polite and helpful attitude.",
+          "value": true
+        },
+        {
+          "criterion_id": "dialogue",
+          "evidence_turns": [
+            10,
+            13,
+            15
+          ],
+          "rationale": "The operator's response was clear and followed a logical sequence, guiding the client through the process. The inclusion of a wait time expectation was also appropriate.",
+          "value": 10
+        },
+        {
+          "criterion_id": "closure",
+          "evidence_turns": [
+            10,
+            15
+          ],
+          "rationale": "The operator ended the conversation with a polite farewell and confirmed that they had been able to help. This completes the interaction.",
+          "value": true
+        },
+        {
+          "criterion_id": "critical",
+          "evidence_turns": [
+            13
+          ],
+          "rationale": "Оператор предоставил инструкции по процессу перевода средств, включая загрузку необходимых документов. Это не нарушает никаких правил.",
+          "value": false
+        }
+      ],
+      "score": {
+        "critical_flag": false,
+        "final_score": 100.0
+      },
+      "status": "ok"
+    },
+    {
+      "conversation_id": "p2-kz-002",
+      "criteria": [
+        {
+          "criterion_id": "contact",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Оператор поздоровался на языке клиента и представился в первом ответе.",
+          "value": true
+        },
+        {
+          "criterion_id": "discovery",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Оператор учёл известные детали и уточнил недостающее до ответа.",
+          "value": true
+        },
+        {
+          "criterion_id": "identification",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Проверка личности подтверждена до раскрытия данных или защищённого действия.",
+          "value": true
+        },
+        {
+          "criterion_id": "consultation",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator stated, 'Тикерді қараудың қажеті жоқ. Өтінім қабылданбаса, ол міндетті түрде орындалып қойған.' (There is no need to look at the ticker. If the request is not accepted, it is already executed.) This directly addresses the client's confusion about an 'отклонён' (rejected) request.",
+          "value": 20
+        },
+        {
+          "criterion_id": "empathy",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator's response, while seemingly dismissive, attempts to reassure the client by stating the request is 'already executed'. This is a basic attempt to address the client's frustration, though it doesn't acknowledge the specific problem of rejection.",
+          "value": true
+        },
+        {
+          "criterion_id": "dialogue",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator's turn is a single statement, lacking a clear flow or progression. It doesn't offer any further clarification or guidance. The operator's turn is a single statement, lacking a clear flow or progression. It doesn't offer any further clarification or guidance.",
+          "value": 4
+        },
+        {
+          "criterion_id": "closure",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The chat ended abruptly with the operator's turn and the system indicating the operator was transferred. There was no closure of the issue or offer of further assistance.",
+          "value": null
+        },
+        {
+          "criterion_id": "critical",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Оператор заявил, что «өтінім міндетті түрде орындалып қойған», не предоставив объяснения или решения проблемы. Это может быть расценено как некомпетентность и игнорирование проблемы клиента.",
+          "value": true
+        }
+      ],
+      "score": {
+        "critical_flag": true,
+        "final_score": 90.53
+      },
+      "status": "ok"
+    },
+    {
+      "conversation_id": "p2-kz-003",
+      "criteria": [
+        {
+          "criterion_id": "contact",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Оператор поздоровался и представился: 'Сәлеметсіз бе, мен Жанармын.'",
+          "value": true
+        },
+        {
+          "criterion_id": "discovery",
+          "evidence_turns": [
+            10,
+            12
+          ],
+          "rationale": "Оператор предложил передать средства напрямую, что подразумевает уточнение деталей.",
+          "value": true
+        },
+        {
+          "criterion_id": "identification",
+          "evidence_turns": [
+            10,
+            12
+          ],
+          "rationale": "Оператор предложил передать средства напрямую, что подразумевает уточнение деталей.",
+          "value": false
+        },
+        {
+          "criterion_id": "consultation",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator directly addresses the client's question about using D-shots for immediate purchase of shares, explaining that this is not possible and directing them to the appropriate account for such transactions. This is a correct and complete answer.",
+          "value": 20
+        },
+        {
+          "criterion_id": "empathy",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator is polite and professional, offering assistance. There is no indication of frustration or a specific problem to address.",
+          "value": true
+        },
+        {
+          "criterion_id": "dialogue",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator's response is clear and follows a logical order, providing information about D-shots and directing the client to the correct account. The wait time is noted.",
+          "value": 10
+        },
+        {
+          "criterion_id": "closure",
+          "evidence_turns": [
+            14
+          ],
+          "rationale": "The operator ends the conversation by offering further assistance and wishing the client well, providing a standard closing statement.",
+          "value": false
+        },
+        {
+          "criterion_id": "critical",
+          "evidence_turns": [
+            12,
+            14
+          ],
+          "rationale": "Оператор предложил личный перевод средств оператору для инвестирования и частную платную консультацию, что является нарушением политики компании.",
+          "value": true
+        }
+      ],
+      "score": {
+        "critical_flag": true,
+        "final_score": 75.0
+      },
+      "status": "ok"
+    },
+    {
+      "conversation_id": "p2-kz-004",
+      "criteria": [
+        {
+          "criterion_id": "contact",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Оператор поздоровался на языке клиента и представился в первом ответе.",
+          "value": true
+        },
+        {
+          "criterion_id": "discovery",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Данных для ответа хватало с самого начала.",
+          "value": null
+        },
+        {
+          "criterion_id": "identification",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Запрос не требовал идентификации. Общие инструкции о том, где клиент может сам посмотреть данные, допустимы без идентификации, если оператор сам их не раскрывает и не выполняет защищённое действие.",
+          "value": null
+        },
+        {
+          "criterion_id": "consultation",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator initiated the conversation and asked how they could help, indicating a willingness to address the client's query. This is a correct next step.",
+          "value": 20
+        },
+        {
+          "criterion_id": "empathy",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator greeted the client and offered assistance, demonstrating a polite and helpful demeanor.",
+          "value": true
+        },
+        {
+          "criterion_id": "dialogue",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator clearly stated their name and offered assistance, providing context for the conversation. The waiting message was appropriate.",
+          "value": 10
+        },
+        {
+          "criterion_id": "closure",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The dialogue ended prematurely before a closure could occur.",
+          "value": null
+        },
+        {
+          "criterion_id": "critical",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "Клиент инициировал запрос на соединение с оператором, а бот ответил, что соединит его. Оператор ответил на запрос клиента.",
+          "value": false
+        }
+      ],
+      "score": {
+        "critical_flag": false,
+        "final_score": 100.0
+      },
+      "status": "ok"
+    },
+    {
+      "conversation_id": "p2-en-001",
+      "criteria": [
+        {
+          "criterion_id": "contact",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator greeted the client and introduced herself: \"Hi, I'm Nora.\"",
+          "value": true
+        },
+        {
+          "criterion_id": "discovery",
+          "evidence_turns": [
+            12,
+            13,
+            14
+          ],
+          "rationale": "The operator provided specific instructions about the alternative website and app, clarifying the client's confusion.",
+          "value": true
+        },
+        {
+          "criterion_id": "identification",
+          "evidence_turns": [
+            16
+          ],
+          "rationale": "The operator concluded the interaction with a standard closing statement.",
+          "value": null
+        },
+        {
+          "criterion_id": "consultation",
+          "evidence_turns": [
+            10,
+            14
+          ],
+          "rationale": "The operator correctly identified the correct website for sign-in and provided specific instructions: 'Go to the other one, not the one you're on. You can use it there.' This directly addresses the client's initial problem.",
+          "value": 5
+        },
+        {
+          "criterion_id": "empathy",
+          "evidence_turns": [
+            16
+          ],
+          "rationale": "The operator's closing statement, 'Glad you got in. Have a good day!', demonstrates a polite and friendly farewell.",
+          "value": true
+        },
+        {
+          "criterion_id": "dialogue",
+          "evidence_turns": [
+            12,
+            14
+          ],
+          "rationale": "The operator's responses were clear and concise, providing specific instructions and addressing the client's questions. The wait time was also acknowledged.",
+          "value": 10
+        },
+        {
+          "criterion_id": "closure",
+          "evidence_turns": [
+            16
+          ],
+          "rationale": "The operator offered a farewell and a positive closing statement, indicating the interaction was complete. The operator did not offer further assistance or recap the outcome.",
+          "value": false
+        },
+        {
+          "criterion_id": "critical",
+          "evidence_turns": [
+            10,
+            14
+          ],
+          "rationale": "The operator instructed the client to use a different website (tradenet.global) without explaining why the original site was not working. This could be interpreted as a misdirection or a lack of proper troubleshooting.",
+          "value": false
+        }
+      ],
+      "score": {
+        "critical_flag": false,
+        "final_score": 75.0
+      },
+      "status": "ok"
+    },
+    {
+      "conversation_id": "p2-en-002",
+      "criteria": [
+        {
+          "criterion_id": "contact",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator, Jordan, greeted the client with \"Hi, I'm Jordan.\" and introduced himself.",
+          "value": true
+        },
+        {
+          "criterion_id": "discovery",
+          "evidence_turns": [
+            11,
+            12,
+            17
+          ],
+          "rationale": "The operator clarified the location of the pricing plan after the client asked for specific guidance.",
+          "value": true
+        },
+        {
+          "criterion_id": "identification",
+          "evidence_turns": [
+            9,
+            10
+          ],
+          "rationale": "The operator provided general guidance without requiring any identity verification.",
+          "value": null
+        },
+        {
+          "criterion_id": "consultation",
+          "evidence_turns": [
+            10,
+            17
+          ],
+          "rationale": "The operator provided a step-by-step guide to locate the pricing plan, including the specific location ('Account Information on the first page') and how to generate a new report if needed. This directly addresses the client's request.",
+          "value": 10
+        },
+        {
+          "criterion_id": "empathy",
+          "evidence_turns": [
+            10
+          ],
+          "rationale": "The operator maintained a polite and helpful tone throughout the interaction, offering assistance and guidance to the client.",
+          "value": true
+        },
+        {
+          "criterion_id": "dialogue",
+          "evidence_turns": [
+            10,
+            17
+          ],
+          "rationale": "The operator's responses were clear and followed a logical sequence, guiding the client through the process of finding the information. The operator's wait time was appropriate.",
+          "value": 10
+        },
+        {
+          "criterion_id": "closure",
+          "evidence_turns": [
+            21
+          ],
+          "rationale": "The operator concluded the conversation with a farewell and confirmed that the client had the report and knew where to find the current plan. This fulfills the closure criteria.",
+          "value": true
+        },
+        {
+          "criterion_id": "critical",
+          "evidence_turns": [
+            10,
+            21
+          ],
+          "rationale": "The operator provided instructions on how to access the report and pricing plan, and offered guidance on resolving the issue with the incorrect download. No critical violations were identified.",
+          "value": false
+        }
+      ],
+      "score": {
+        "critical_flag": false,
+        "final_score": 87.5
+      },
+      "status": "ok"
+    }
+  ]
+}
